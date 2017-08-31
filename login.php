@@ -10,14 +10,14 @@ $stmt = $conn->prepare("select username,password from users where username='$una
 $stmt->execute();
 
 $nfrows = $stmt->rowCount();
-echo $nfrows;
+
 
 
 
 if ($nfrows==1) {
-    echo "working";
+   
     $_SESSION['login_user']=$uname;
-    header("Location: cemail.php");
+    header("location: cemail.php");
 }
 else {
    header("location: index.php");

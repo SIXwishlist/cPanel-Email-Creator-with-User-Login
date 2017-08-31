@@ -4,19 +4,19 @@
 
 include('session.php');
 
-if(isset($login_session)){
-    echo "set";
-}else {
-    echo "unset";
-}
+//if(isset($login_session)){
+//    echo "set";
+//}else {
+//    echo "unset";
+//}
 
 include("./xmlapi.php");   //XMLAPI cpanel client class
 // Default whm/cpanel account info
 
-$ip = "188.165.81.220";           // should be WHM ip address
-$account = "u9797763";        // cpanel user account name
-$passwd = "32c29)4pX7";        // cpanel user password
-$port = 2083;                 // cpanel secure authentication port unsecure port# 2082
+$ip = "";           // should be WHM ip address
+$account = "";        // cpanel user account name
+$passwd = "";        // cpanel user password
+$port = 2082;                 // cpanel secure authentication port unsecure port# 2082
 
 $email_domain = 'trustsmartsl.com'; // email domain (usually same as cPanel domain)
 $email_quota = 500; // default amount of space in megabytes
