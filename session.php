@@ -1,13 +1,22 @@
-<?php 
+<?php
+
 require_once 'inc/config.php';
+
 session_start();
 $user_check = $_SESSION['login_user'];
-$ses_sql = mysql_query("select username from users where username='$user_check'");
-$row = mysql_fetch_assoc($ses_sql);
-$login_session = $row['username'];
-if (!isset($login_session)) {
-    mysql_close($con);
+echo $user_check;
+
+$stmt=$conn->prepare("select username from users where username='$user_check'");
+$stmt->execute();
+$result=$stmt->fetchColumn();
+
+
+$login_session=$result;
+
+
+
+if(!isset($login_session)){
+    $conn = null;
     header('location: index.php');
 }
-
 ?>

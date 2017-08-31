@@ -81,7 +81,7 @@
 			<div id="submit">
 				
 				
-				<input type="submit" class=btn />
+				<input type="submit" class="btn" />
 				</form>
 			</div>
 <span id=success></span>

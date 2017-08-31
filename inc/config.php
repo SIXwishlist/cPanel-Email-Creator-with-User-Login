@@ -1,14 +1,17 @@
 <?php
-define("DB_USER", "u9797763_root");
-define("DB_HOST","localhost");
-define("DB_PASS", "R#SVGn90EXBq");
-define("DB_NAME", "u9797763_u0785463_u5545333_email");
 
-$connection=  mysql_connect(DB_HOST,DB_USER,DB_PASS);
-if(!$connection){
-    die("Error Connection to the database host" . mysql_error());
+define("DB_USER", "root");
+define("DB_HOST", "localhost");
+define("DB_PASS", "");
+define("DB_NAME", "emailc");
+
+try {
+
+    $conn = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+   // echo "Connected successfully";
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
 }
-$db_select=  mysql_select_db(DB_NAME, $connection );
-if(!$db_select){
-   die("No Database found " . mysql_error());
-}?>
+?>

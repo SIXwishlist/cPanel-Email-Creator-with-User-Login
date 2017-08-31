@@ -1,20 +1,27 @@
 <?php
+
 require_once 'inc/config.php';
 session_start();
 $uname = $_POST['username'];
 $pass = $_POST['password'];
 
-$sql = "select username,password from users where username='$uname' and password='$pass'";
-$result = mysql_query($sql) or die("Query Failed");
+$stmt = $conn->prepare("select username,password from users where username='$uname' and password='$pass'");
 
-$nfrows = mysql_num_rows($result);
+$stmt->execute();
 
-if ($nfrows == 1) {
-   $_SESSION['login_user']=$uname;
-   header("location: cemail.php");
-   
-} else {
-    header("location: index.php");
+$nfrows = $stmt->rowCount();
+echo $nfrows;
+
+
+
+if ($nfrows==1) {
+    echo "working";
+    $_SESSION['login_user']=$uname;
+    header("Location: cemail.php");
 }
-mysql_close($con);
+else {
+   header("location: index.php");
+}
+
+$conn = null;
 ?>
